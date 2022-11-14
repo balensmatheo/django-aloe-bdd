@@ -4,8 +4,6 @@ on: [push]
 jobs:
   ci:
     runs-on: ubuntu-latest
-    env:
-      POETRY_VIRTUALENVS_IN_PROJECT: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
