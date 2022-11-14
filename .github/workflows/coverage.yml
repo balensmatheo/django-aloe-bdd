@@ -14,4 +14,4 @@ jobs:
           pip install coverage pytest
       - name: run coverage
         run: |    
-          python3 -m coverage .
+          python3 -m coverage report -m
