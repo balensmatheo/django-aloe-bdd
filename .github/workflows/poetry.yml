@@ -2,11 +2,18 @@ name: Poetry
 on: [push]
 
 jobs:
-  ci:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - run: pip install poetry==1.1.12
-      - run: poetry install
-      - run: poetry run
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+      - name: run poetry
+        run: |    
+          poetry install
+          poetry run pytest
+
